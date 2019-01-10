@@ -1,0 +1,8 @@
+﻿
+click to the next; [done]
+make a loading interface; (add exceptions)
+show progress; [done]
+make it possible to jump to numbers; [done] (add exception) [done - no exception just don't leave the range]
+make button function out of dynamically making buttons [done]
+
+save [done]
