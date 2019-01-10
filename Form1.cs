@@ -24,7 +24,7 @@ namespace Select10by10
             public string unit;
             public int geo_order;
 
-            private Color[] states = new Color[] { Color.LightGray, Color.Red, Color.Blue };
+            private Color[] states = new Color[] { Color.LightSkyBlue, Color.IndianRed, Color.LightGray };
 
             public TwoColorButton()
                 : base()
@@ -55,11 +55,11 @@ namespace Select10by10
 
         private void MakeButtons(onesquare square1)
         {
-                     
-            Color[] states = new Color[] { Color.LightGray, Color.Red, Color.Blue };
-        
+
+            Color[] states = new Color[] { Color.LightSkyBlue, Color.IndianRed, Color.LightGray };
+            int lef1 = 65;
             int top = 100;
-            int left = 100;
+            int left = lef1;
             int count = 35;
             int index = new int();
             List<TwoColorButton> buttons = new List<TwoColorButton>();
@@ -87,7 +87,7 @@ namespace Select10by10
                 if ((i + 1) % 10 == 0)
                 {
                     top = top + count;
-                    left = 100;
+                    left = lef1;
                 }
                 else
                 {
@@ -143,15 +143,19 @@ namespace Select10by10
                     List<onesquare> all_squares = CreateOneSquares(filePath);
 
                     onesquare sq1 = all_squares[0];
-                    Counter.Maximum = all_squares.Count;
-                    Progress.Maximum = all_squares.Count;
+                    Counter.Maximum = all_squares.Count - 1;
+                    Progress.Maximum = all_squares.Count - 1;
                     MakeButtons(sq1);
                     NextSave.Enabled = true;
                     Counter.Enabled = true;
                     GoTo.Enabled = true;
+                    Back.Enabled = true;
                     upload.Tag = filePath;
+                    // LABEL
+                    current.Text = sq1.name;
+
                 }
-                catch(System.ArgumentException ex)
+                catch (System.ArgumentException ex)
                 {
                     upload.Tag = String.Empty;
                     MessageBox.Show("Not a valid file.", "Not a valid file.", MessageBoxButtons.OK);
@@ -163,12 +167,13 @@ namespace Select10by10
             }
          
         }
-
+        
         private void button1_Click(object sender, EventArgs e)
         {
+            /*
             string[] lines_array = ReadInLines("C:\\Users\\senic\\Desktop\\lilongwe_1k_sample_complete_with_100m.kml");
             Debug.WriteLine(lines_array[0]);
-            /*  NextSave.Enabled = true;
+              NextSave.Enabled = true;
               Counter.Enabled = true;
               GoTo.Enabled = true;
 
@@ -179,7 +184,7 @@ namespace Select10by10
               MakeButtons(sq1);
               */
         }
-
+    
         private void next_Click(object sender, EventArgs e)
         {
             // SAVE
@@ -230,7 +235,10 @@ namespace Select10by10
                 }
             }
             // NEXT
-            Counter.Value = Counter.Value + 1;
+            if (Convert.ToInt32(Counter.Value)  + 1 <= Counter.Maximum)
+            {
+                Counter.Value = Convert.ToInt32(Counter.Value) + 1;
+            }
             List<onesquare> all_squares = CreateOneSquares(upload.Tag.ToString());
             onesquare sq1 = all_squares[Convert.ToInt32(Counter.Value)];
             RemoveButtons();
@@ -238,6 +246,10 @@ namespace Select10by10
 
             // PROGRESS
             Progress.Value = Convert.ToInt32(Counter.Value);
+
+            // LABEL
+            current.Text = sq1.name;
+
 
         }
 
@@ -251,6 +263,28 @@ namespace Select10by10
 
             // PROGRESS
             Progress.Value = Convert.ToInt32(Counter.Value);
+
+            // LABEL
+            current.Text = sq1.name;
+        }
+
+        private void Back_Click(object sender, EventArgs e)
+        {
+            List<onesquare> all_squares = CreateOneSquares(upload.Tag.ToString());
+            if (Convert.ToInt32(Counter.Value) - 1 >= 0)
+            {
+                Counter.Value = Convert.ToInt32(Counter.Value) - 1;
+            }
+            onesquare sq1 = all_squares[Convert.ToInt32(Counter.Value)];
+            RemoveButtons();
+            MakeButtons(sq1);
+
+            // PROGRESS
+            Progress.Value = Convert.ToInt32(Counter.Value);
+
+            // LABEL
+            current.Text = sq1.name;
+
         }
     }
 }

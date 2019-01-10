@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.Button button1;
             System.Windows.Forms.Button button2;
             System.Windows.Forms.Button button3;
             System.Windows.Forms.Button button4;
@@ -44,7 +43,9 @@
             this.GoTo = new System.Windows.Forms.Button();
             this.Progress = new System.Windows.Forms.TrackBar();
             this.upload = new System.Windows.Forms.Button();
-            button1 = new System.Windows.Forms.Button();
+            this.Back = new System.Windows.Forms.Button();
+            this.current = new System.Windows.Forms.Label();
+            this.lab1 = new System.Windows.Forms.Label();
             button2 = new System.Windows.Forms.Button();
             button3 = new System.Windows.Forms.Button();
             button4 = new System.Windows.Forms.Button();
@@ -58,16 +59,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.Counter)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Progress)).BeginInit();
             this.SuspendLayout();
-            // 
-            // button1
-            // 
-            button1.Location = new System.Drawing.Point(25, 24);
-            button1.Name = "button1";
-            button1.Size = new System.Drawing.Size(34, 34);
-            button1.TabIndex = 0;
-            button1.Text = "100";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -142,7 +133,7 @@
             // NextSave
             // 
             this.NextSave.Enabled = false;
-            this.NextSave.Location = new System.Drawing.Point(114, 498);
+            this.NextSave.Location = new System.Drawing.Point(152, 498);
             this.NextSave.Name = "NextSave";
             this.NextSave.Size = new System.Drawing.Size(87, 35);
             this.NextSave.TabIndex = 1;
@@ -153,7 +144,7 @@
             // Counter
             // 
             this.Counter.Enabled = false;
-            this.Counter.Location = new System.Drawing.Point(207, 507);
+            this.Counter.Location = new System.Drawing.Point(245, 507);
             this.Counter.Name = "Counter";
             this.Counter.Size = new System.Drawing.Size(87, 20);
             this.Counter.TabIndex = 3;
@@ -162,7 +153,7 @@
             // GoTo
             // 
             this.GoTo.Enabled = false;
-            this.GoTo.Location = new System.Drawing.Point(300, 498);
+            this.GoTo.Location = new System.Drawing.Point(338, 498);
             this.GoTo.Name = "GoTo";
             this.GoTo.Size = new System.Drawing.Size(87, 35);
             this.GoTo.TabIndex = 4;
@@ -173,14 +164,14 @@
             // Progress
             // 
             this.Progress.Enabled = false;
-            this.Progress.Location = new System.Drawing.Point(114, 539);
+            this.Progress.Location = new System.Drawing.Point(59, 539);
             this.Progress.Name = "Progress";
-            this.Progress.Size = new System.Drawing.Size(273, 45);
+            this.Progress.Size = new System.Drawing.Size(366, 45);
             this.Progress.TabIndex = 5;
             // 
             // upload
             // 
-            this.upload.Location = new System.Drawing.Point(65, 24);
+            this.upload.Location = new System.Drawing.Point(59, 12);
             this.upload.Name = "upload";
             this.upload.Size = new System.Drawing.Size(87, 34);
             this.upload.TabIndex = 6;
@@ -188,17 +179,49 @@
             this.upload.UseVisualStyleBackColor = true;
             this.upload.Click += new System.EventHandler(this.upload_Click);
             // 
+            // Back
+            // 
+            this.Back.Enabled = false;
+            this.Back.Location = new System.Drawing.Point(59, 498);
+            this.Back.Name = "Back";
+            this.Back.Size = new System.Drawing.Size(87, 35);
+            this.Back.TabIndex = 7;
+            this.Back.Text = "Back";
+            this.Back.UseVisualStyleBackColor = true;
+            this.Back.Click += new System.EventHandler(this.Back_Click);
+            // 
+            // current
+            // 
+            this.current.AutoSize = true;
+            this.current.Location = new System.Drawing.Point(223, 587);
+            this.current.Name = "current";
+            this.current.Size = new System.Drawing.Size(41, 13);
+            this.current.TabIndex = 8;
+            this.current.Text = "Current";
+            // 
+            // lab1
+            // 
+            this.lab1.AutoSize = true;
+            this.lab1.Location = new System.Drawing.Point(148, 587);
+            this.lab1.Name = "lab1";
+            this.lab1.Size = new System.Drawing.Size(66, 13);
+            this.lab1.TabIndex = 9;
+            this.lab1.Text = "Current Unit:";
+            this.lab1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(490, 624);
+            this.Controls.Add(this.lab1);
+            this.Controls.Add(this.current);
+            this.Controls.Add(this.Back);
             this.Controls.Add(this.upload);
             this.Controls.Add(this.Progress);
             this.Controls.Add(this.GoTo);
             this.Controls.Add(this.Counter);
             this.Controls.Add(this.NextSave);
-            this.Controls.Add(button1);
             this.Name = "Form1";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.Counter)).EndInit();
@@ -215,6 +238,9 @@
         private System.Windows.Forms.Button GoTo;
         private System.Windows.Forms.TrackBar Progress;
         private System.Windows.Forms.Button upload;
+        private System.Windows.Forms.Button Back;
+        private System.Windows.Forms.Label current;
+        private System.Windows.Forms.Label lab1;
     }
 }
 
